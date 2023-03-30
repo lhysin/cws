@@ -37,8 +37,9 @@ jobs:
       ## 웹 이미지 빌드 및 도커허브에 push
       - name: web docker build and push
         run: |
-          ll
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          ls
+          pwd
           docker build . -t cws-item
           docker push cws-item
         working-directory: ./item
