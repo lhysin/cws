@@ -40,3 +40,4 @@ jobs:
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
           docker build . -t cws-item
           docker push cws-item
+        working-directory: ./item
