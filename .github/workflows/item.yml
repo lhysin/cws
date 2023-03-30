@@ -38,8 +38,6 @@ jobs:
       - name: web docker build and push
         run: |
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-          ls
-          pwd
           docker build . -t cws-item
           docker push cws-item
         working-directory: ./item
