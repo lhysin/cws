@@ -30,6 +30,13 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew bootJar
         working-directory: item-api
+        
+      - name: Display current directory
+        run: ls -al
+        
+      - name: Display item-api directory
+        run: ls -al
+        working-directory: item-api
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
