@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/java/jdk:17u1-zulu-alpine
+FROM openjdk:17-jdk-slim-buster
 COPY . .
 RUN ./gradlew bootJar
 ARG JAR_FILE=build/libs/*.jar
