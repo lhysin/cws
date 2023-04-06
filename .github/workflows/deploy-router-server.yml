@@ -1,11 +1,4 @@
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-# This workflow will build a Java project with Gradle and cache/restore any dependencies to improve the workflow execution time
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-gradle
-
-name: deploy-item-api
+name: deploy-router-server
 
 on:
   push:
@@ -20,7 +13,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        
+
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
@@ -29,14 +22,7 @@ jobs:
 
       - name: Build with Gradle
         run: ./gradlew bootJar
-        working-directory: item-api
-        
-      - name: Display current directory
-        run: ls -al
-        
-      - name: Display item-api directory
-        run: ls -al
-        working-directory: item-api
+        working-directory: router-server
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
@@ -53,11 +39,11 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: item-api # subdirectory
-          file: item-api/Dockerfile
+          context: router-server # subdirectory
+          file: router-server/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: lhysin/cws-item-api:latest
+          tags: lhysin/cws-router-server:latest
 
       - name: SSH
         uses: appleboy/ssh-action@master
@@ -66,5 +52,5 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            docker pull lhysin/cws-item-api:latest
-            docker run -d -p 8180:8080 --name item-api lhysin/cws-item-api:latest
+            docker pull lhysin/cws-router-server:latest
+            docker run -d -p 8180:8080 --name cws-router-server lhysin/cws-router-server:latest
