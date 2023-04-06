@@ -7,6 +7,9 @@ WORKDIR /app
 # Copy source code to working directory
 COPY . .
 
+# Create build/libs directory
+RUN mkdir -p build/libs
+
 # Build the application with Gradle
 RUN ./gradlew build
 
