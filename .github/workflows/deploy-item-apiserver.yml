@@ -2,7 +2,8 @@ name: deploy-item-apiserver
 
 on:
   push:
-    branches: [ "main" ]
+    paths:
+      - item-apiserver/**
 
 permissions:
   contents: read
