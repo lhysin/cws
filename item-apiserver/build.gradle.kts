@@ -25,12 +25,12 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("io.github.microutils:kotlin-logging-jvm:3.0.4")
 
-    implementation("com.github.sonus21:rqueue-spring:2.13.0-RELEASE")
-    implementation("com.github.sonus21:rqueue-spring-boot-starter:2.13.0-RELEASE")
+    implementation("org.springframework.kafka:spring-kafka:3.0.5")
 
     runtimeOnly("com.h2database:h2:2.1.214")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.springframework.kafka:spring-kafka-test:3.0.5")
 }
 
 tasks.withType<KotlinCompile> {
