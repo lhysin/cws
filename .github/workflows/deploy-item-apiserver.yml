@@ -53,5 +53,6 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           script: |
+            sudo su
             docker pull lhysin/cws-item-apiserver:latest
             docker run -d -p 8180:8080 --name cws-item-apiserver lhysin/cws-item-apiserver:latest
