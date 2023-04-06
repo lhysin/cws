@@ -1,5 +1,5 @@
 # Base image
-FROM openjdk:17-jdk
+FROM mcr.microsoft.com/java/jdk:17u1-zulu-alpine
 
 # Working directory
 WORKDIR /app
