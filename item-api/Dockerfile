@@ -7,11 +7,8 @@ WORKDIR /app
 # Copy source code to working directory
 COPY . .
 
-# Create build/libs directory
-RUN mkdir -p build/libs
-
 # Build the application with Gradle
-RUN ./gradlew build
+RUN ./gradlew bootJar
 
 # Set the application JAR file path
 ARG JAR_FILE=build/libs/*.jar
