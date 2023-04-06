@@ -1,11 +1,11 @@
 FROM mcr.microsoft.com/java/jdk:17u1-zulu-alpine
-RUN ll
+RUN ls
 COPY . .
-RUN ll
+RUN ls
 RUN ./gradlew bootJar
-RUN ll
+RUN ls
 ARG JAR_FILE=build/libs/*.jar
-RUN ll
+RUN ls
 COPY ${JAR_FILE} /app/
-RUN ll
+RUN ls
 ENTRYPOINT ["java","-jar","/app.jar"]
