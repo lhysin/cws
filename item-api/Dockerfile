@@ -1,4 +1,11 @@
-FROM openjdk:17
+# amd64 아키텍처용 이미지를 빌드하는 경우
+FROM openjdk:17-jdk-slim AS builder
+ARG JAR_FILE=build/libs/*.jar
+COPY ${JAR_FILE} /app/
+ENTRYPOINT ["java","-jar","/app.jar"]
+
+# arm64 아키텍처용 이미지를 빌드하는 경우
+FROM arm64v8/openjdk:17-jdk-slim AS builder
 ARG JAR_FILE=build/libs/*.jar
 COPY ${JAR_FILE} /app/
 ENTRYPOINT ["java","-jar","/app.jar"]
