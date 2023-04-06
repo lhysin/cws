@@ -1,10 +1,5 @@
 # Base image
-
-# High performance And Allow Multi arch
-FROM adoptopenjdk:17-jdk-hotspot-bionic
-
-# lightweight
-# FROM openjdk:17-jdk-slim
+FROM openjdk:17-jdk
 
 # Working directory
 WORKDIR /app
