@@ -1,4 +1,5 @@
 FROM mcr.microsoft.com/java/jdk:17u1-zulu-alpine
+COPY . .
 RUN ./gradlew bootJar
 ARG JAR_FILE=build/libs/*.jar
 COPY ${JAR_FILE} /app/
