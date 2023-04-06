@@ -32,7 +32,7 @@ jobs:
         working-directory: item-api
 
       - name: Copy Jar file
-        run: mv build/libs/$(ls build/libs) app.jar
+        run: mv -f build/libs/$(ls build/libs) app.jar
         working-directory: item-api
 
       - name: Set up QEMU
