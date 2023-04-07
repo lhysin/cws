@@ -6,13 +6,13 @@ server:
 
 spring:
   application:
-    name: cws-api
+    name: flight-cws-api
   config:
     activate:
       on-profile: local
-  output:
-    ansi:
-      enabled: true
+#  output:
+#    ansi:
+#      enabled: true
 
   # 404 not found settings
   #mvc:

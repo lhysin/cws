@@ -2,4 +2,5 @@
 ------------
 - Java : openjdk17
 - SpringBoot : 2.7.10
-- Tomcat : 10.1.7
+- Server : Embedded Netty
+- Gradle : 7.3

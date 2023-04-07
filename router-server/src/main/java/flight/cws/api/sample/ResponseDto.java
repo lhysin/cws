@@ -1,4 +1,4 @@
-package enm.cj.cwsflight.api.sample;
+package flight.cws.api.sample;
 
 import lombok.Data;
 
