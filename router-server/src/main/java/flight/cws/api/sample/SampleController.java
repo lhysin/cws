@@ -1,9 +1,12 @@
 package flight.cws.api.sample;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.Disposable;
 import reactor.core.publisher.Mono;
 
 import java.util.concurrent.ThreadLocalRandom;
@@ -23,10 +26,20 @@ public class SampleController {
         return sampleService.getTestClient();
     }
 
+    @GetMapping(value = "/newTest")
+    public Disposable getNewTest() {
+        Disposable disposable = sampleService.getNewTest();
+        return disposable;
+    }
+
     @GetMapping(value = "/getResTest")
-    public String getResTest(@RequestParam String param) throws InterruptedException {
+    public ResponseEntity<ResponseDto> getResTest(@RequestParam String param) throws InterruptedException {
         int ranVal = ThreadLocalRandom.current().nextInt(1000, 7000);
         Thread.sleep(ranVal);
-        return "param:"+param +" / interval:" + String.valueOf(ranVal)+"ms";
+        ResponseDto responseDto = new ResponseDto();
+        responseDto.setStatus(HttpStatus.OK.getReasonPhrase());
+        responseDto.setData("param:"+param +" / interval:" + String.valueOf(ranVal)+"ms");
+        log.info("REQUEST : {}", responseDto);
+        return ResponseEntity.ok(responseDto);
     }
 }

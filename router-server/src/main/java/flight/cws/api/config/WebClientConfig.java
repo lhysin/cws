@@ -19,6 +19,7 @@ import reactor.netty.resources.ConnectionProvider;
 
 import javax.net.ssl.SSLException;
 import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 @Slf4j
 @Configuration
@@ -94,12 +95,12 @@ public class WebClientConfig {
     private static HttpClient getHttpClient(ConnectionProvider provider) {
         HttpClient httpClient = HttpClient
             .create(provider)
-            .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 10_000)
+            .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 10_000) //커넥션연결 타임아웃
             .doOnConnected(conn ->
-                conn.addHandlerLast(new ReadTimeoutHandler(10)) //읽기시간초과 타임아웃
-                    .addHandlerLast(new WriteTimeoutHandler(10))
+                conn.addHandlerLast(new ReadTimeoutHandler(10_000, TimeUnit.MILLISECONDS)) //읽기시간초과 타임아웃
+                    .addHandlerLast(new WriteTimeoutHandler(10_000, TimeUnit.MILLISECONDS)) //쓰기시간초과 타임아웃
             )
-            .responseTimeout(Duration.ofSeconds(10))
+            .responseTimeout(Duration.ofMillis(5_000)) // 최종 response가 끝나기까지 타임아웃. 커넥션+읽기+쓰기 타임을 주는게 적절
             .secure(
                 sslContextSpec -> {
                     try {
@@ -119,8 +120,8 @@ public class WebClientConfig {
             .maxConnections(100)     //connection pool의 갯수
             .pendingAcquireTimeout(Duration.ofMillis(0)) //커넥션 풀에서 커넥션을 얻기 위해 기다리는 최대 시간
             .pendingAcquireMaxCount(-1) //커넥션 풀에서 커넥션을 가져오는 시도 횟수 (-1: no limit)
-            .maxIdleTime(Duration.ofMillis(5000L)) //커넥션 풀에서 idle 상태의 커넥션을 유지하는 시간
-            .maxLifeTime(Duration.ofSeconds(5000L)) //커넥션 풀에서 커넥션이 살아있을수 있는 최대 시간
+            .maxIdleTime(Duration.ofSeconds(5, 5_000)) //커넥션 풀에서 idle 상태의 커넥션을 유지하는 시간
+            .maxLifeTime(Duration.ofSeconds(5, 5_000)) //커넥션 풀에서 커넥션이 살아있을수 있는 최대 시간
             .build();
         return provider;
     }
