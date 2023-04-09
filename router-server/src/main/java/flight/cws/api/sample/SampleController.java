@@ -37,9 +37,10 @@ public class SampleController {
         int ranVal = ThreadLocalRandom.current().nextInt(1000, 7000);
         Thread.sleep(ranVal);
         ResponseDto responseDto = new ResponseDto();
-        responseDto.setStatus(HttpStatus.OK.getReasonPhrase());
+        responseDto.setStatus(HttpStatus.OK.value());
+        responseDto.setMessage(HttpStatus.OK.getReasonPhrase());
         responseDto.setData("param:"+param +" / interval:" + String.valueOf(ranVal)+"ms");
-        log.info("REQUEST : {}", responseDto);
+        log.info(">>> To Dummy REQUEST : {}", responseDto);
         return ResponseEntity.ok(responseDto);
     }
 }

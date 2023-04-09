@@ -23,6 +23,12 @@ public class WebClientService {
 
     private final WebClient webClient;
 
+
+    public ResponseDto requestBlockGet(String uriPath, String uriQuery) {
+        ResponseDto responseDto = requestGet(uriPath,uriQuery).block();
+        return responseDto;
+    }
+
     public Mono<ResponseDto> requestGet(String uriPath, String uriQuery) {
 
         Mono<ResponseDto> responseDtoMono = webClient.mutate().baseUrl(BASE_URL).build()
@@ -61,7 +67,8 @@ public class WebClientService {
             })
             .bodyToMono(
                 new ParameterizedTypeReference<ResponseDto>() {}
-            );
+            )
+            .log();
             //.toEntity(ResponseDto.class);
 
         return responseDtoMono;

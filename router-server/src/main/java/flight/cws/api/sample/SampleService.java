@@ -2,6 +2,7 @@ package flight.cws.api.sample;
 
 import flight.cws.api.common.DummyApiClientService;
 import flight.cws.api.common.WebClientService;
+import io.netty.handler.codec.http.DefaultHttpResponse;
 import io.netty.handler.timeout.ReadTimeoutException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -66,7 +67,6 @@ public class SampleService {
 
     public Disposable getNewTest() {
         Disposable disposable = dummyApiClientService.apiCall("/getResTest", "param=2")
-            .onErrorMap(ReadTimeoutException.class, ex -> new HttpTimeoutException("ReadTimeout"))
             .subscribe(response -> log.info(">>>>>> response Status : {}, Body : {}", response.getStatus(), response.getData())
             );
 
@@ -74,6 +74,7 @@ public class SampleService {
             .onErrorMap(ReadTimeoutException.class, ex -> new HttpTimeoutException("ReadTimeout"))
             .subscribe(response -> log.info(">>>>>> response Status : {}, Body : {}", response.getStatus(), response.getData())
             );
+
 
         return disposable;
     }

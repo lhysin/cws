@@ -34,7 +34,8 @@ public class DummyApiClientService {
                     log.error("response Error. {}",e.getMessage());
                     //throw new RuntimeException(e.getMessage());
                 }
-            );
+            )
+            .onErrorComplete();
 
         return res;
     }
