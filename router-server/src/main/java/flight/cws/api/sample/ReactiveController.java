@@ -4,6 +4,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.Disposable;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
 
@@ -25,6 +27,19 @@ public class ReactiveController {
             .log();
         return responseDto;
     }
+
+    @GetMapping(value = "/react/response/nonblock")
+    public Mono<Void> getResponseNonBlockTest() {
+        reactiveService.getResponseNonBlockTest();
+        return Mono.empty().then();
+    }
+
+    @GetMapping(value = "/react/response/multi")
+    public Flux<Disposable> getResponseMultiTest() {
+
+        return reactiveService.getMultiNonBlockTest1();
+    }
+
 
 
 }

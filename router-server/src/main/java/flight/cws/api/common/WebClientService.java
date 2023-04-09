@@ -6,12 +6,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.reactive.function.client.ClientResponse;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
-import org.springframework.web.util.UriBuilder;
 import reactor.core.publisher.Mono;
 
 @Slf4j
@@ -24,8 +21,18 @@ public class WebClientService {
     private final WebClient webClient;
 
 
-    public ResponseDto requestBlockGet(String uriPath, String uriQuery) {
-        ResponseDto responseDto = requestGet(uriPath,uriQuery).block();
+    public Mono<ResponseDto> requestGetWrap(String uriPath, String uriQuery) {
+        Mono<ResponseDto> responseDto = requestGet(uriPath,uriQuery)
+            .doOnSuccess(
+                response -> log.info("[WebClient]Request apiCall Success. {}", response)
+            )
+            .doOnError(
+                e -> {
+                    log.error("[WebClient]Request apiCall Error. {}",e.getMessage());
+                    //throw new RuntimeException(e.getMessage());
+                }
+            )
+            .onErrorComplete();
         return responseDto;
     }
 

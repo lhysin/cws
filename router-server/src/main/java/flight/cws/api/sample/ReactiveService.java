@@ -5,6 +5,9 @@ import flight.cws.api.common.WebClientService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import reactor.core.Disposable;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 @Slf4j
 @Service
@@ -16,8 +19,25 @@ public class ReactiveService {
 
     public ResponseDto getResponseBlockTest() {
 
-        return webClientService.requestBlockGet("/dummy/200", "param=ar");
+        return webClientService.requestGetWrap("/dummy/200", "param=ar")
+            .block();
     }
+
+    public Mono<Void> getResponseNonBlockTest() {
+        webClientService.requestGetWrap("/dummy/200", "param=ar")
+            .subscribe(response -> log.info(">> response Status : {}, Body : {}", response.getStatus(), response.getData()));
+
+        return Mono.empty();
+    }
+
+    public Flux<Disposable> getMultiNonBlockTest1() {
+        return Flux.just(
+            webClientService.requestGetWrap("/dummy/200", "param=1").subscribe(),
+            webClientService.requestGetWrap("/dummy/200", "param=2").subscribe(),
+            webClientService.requestGetWrap("/dummy/200", "param=3").subscribe()
+        );
+    }
+
 
 
 }
