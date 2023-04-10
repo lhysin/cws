@@ -53,6 +53,9 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            sudo su
             docker pull lhysin/cws-item-apiserver:latest
-            docker run -d -p 8180:8080 --name cws-item-apiserver lhysin/cws-item-apiserver:latest
+            docker run -d -p 8180:8080 --name cws-item-apiserver \
+            -e SPRING_DATASOURCE_URL=${{ secrets.SPRING_DATASOURCE_URL }} \
+            -e SPRING_DATASOURCE_USERNAME=${{ secrets.SPRING_DATASOURCE_USERNAME }} \
+            -e SPRING_DATASOURCE_PASSWORD=${{ secrets.SPRING_DATASOURCE_PASSWORD }} \
+            lhysin/cws-item-apiserver:latest
