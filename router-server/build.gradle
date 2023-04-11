@@ -41,7 +41,7 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 
     // https://springdoc.org/#Introduction
-    //implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:2.1.0")
+    implementation("org.springdoc:springdoc-openapi-webflux-ui:1.6.7")
 
     // logging and monitoring
     implementation("com.github.loki4j:loki-logback-appender:1.4.0")
