@@ -9,11 +9,6 @@ management:
           - prometheus
           - env
           - httptrace
-
-springdoc:
-  version: '@springdoc.version@'
-  swagger-ui:
-    use-root-path: true
 ---
 server:
   port: 8080
