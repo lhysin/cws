@@ -17,7 +17,7 @@
             </http>
             <format>
                 <label>
-                    <pattern>app=item-apiserver,host=${HOSTNAME},level=%level,profile=${spring.profiles.active}</pattern>
+                    <pattern>app=router-server,host=${HOSTNAME},level=%level,profile=${spring.profiles.active}</pattern>
                 </label>
                 <message>
                     <pattern>${FILE_LOG_PATTERN}</pattern>
