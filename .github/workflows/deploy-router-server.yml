@@ -48,6 +48,7 @@ jobs:
           tags: lhysin/cws-router-server:latest
 
   deploy:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: SSH
