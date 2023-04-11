@@ -14,12 +14,16 @@ management:
   endpoints:
     web:
       exposure:
-        include: health,info,swagger-ui
+        include:
+          - info
+          - health
+          - metrics
+          - prometheus
+          - env
 
 springdoc:
   packages-to-scan:
     - io.cws
-    - org.springframework.boot.actuate
 ---
 spring:
   config:
