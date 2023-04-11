@@ -46,6 +46,9 @@ jobs:
           push: true
           tags: lhysin/cws-item-apiserver:latest
 
+  restart:
+    runs-on: ubuntu-latest
+    steps:
       - name: SSH
         uses: appleboy/ssh-action@master
         with:
