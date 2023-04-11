@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - router-server/**
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -46,6 +47,9 @@ jobs:
           push: true
           tags: lhysin/cws-router-server:latest
 
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
       - name: SSH
         uses: appleboy/ssh-action@master
         with:
@@ -54,4 +58,9 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             docker pull lhysin/cws-router-server:latest
-            docker run -d -p 8180:8080 --name cws-router-server lhysin/cws-router-server:latest
+            docker run -d -p 8980:8080 --name cws-router-server \
+            -e SPRING_DATASOURCE_URL=${{ secrets.SPRING_DATASOURCE_URL }} \
+            -e SPRING_DATASOURCE_USERNAME=${{ secrets.SPRING_DATASOURCE_USERNAME }} \
+            -e SPRING_DATASOURCE_PASSWORD=${{ secrets.SPRING_DATASOURCE_PASSWORD }} \
+            -e SPRING_PROFILES_ACTIVE=prd \
+            lhysin/cws-router-server:latest
