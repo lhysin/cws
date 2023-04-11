@@ -47,7 +47,7 @@ jobs:
           push: true
           tags: lhysin/cws-router-server:latest
 
-  restart:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: SSH
