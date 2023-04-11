@@ -1,4 +1,4 @@
-package flight.cws.api.sample;
+package io.cws.sample;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

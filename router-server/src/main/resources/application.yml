@@ -1,3 +1,20 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - info
+          - health
+          - metrics
+          - prometheus
+          - env
+          - httptrace
+
+springdoc:
+  version: '@springdoc.version@'
+  swagger-ui:
+    use-root-path: true
+---
 server:
   port: 8080
   compression: #embedded tomcat 기동 시에 사용되는 설정. tomcat server 에서 실행할 경우는 server.xml 에 설정.
@@ -6,7 +23,7 @@ server:
 
 spring:
   application:
-    name: flight-cws-api
+    name: router-server
   config:
     activate:
       on-profile: local

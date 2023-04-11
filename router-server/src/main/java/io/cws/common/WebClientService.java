@@ -1,6 +1,6 @@
-package flight.cws.api.common;
+package io.cws.common;
 
-import flight.cws.api.sample.ResponseDto;
+import io.cws.sample.ResponseDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.ParameterizedTypeReference;

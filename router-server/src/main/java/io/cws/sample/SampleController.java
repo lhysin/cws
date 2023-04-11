@@ -1,4 +1,4 @@
-package flight.cws.api.sample;
+package io.cws.sample;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

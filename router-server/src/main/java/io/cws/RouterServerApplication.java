@@ -1,4 +1,4 @@
-package flight.cws.api;
+package io.cws;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,10 +6,10 @@ import org.springframework.web.reactive.config.EnableWebFlux;
 
 @SpringBootApplication
 @EnableWebFlux
-public class FlightCwsApiApplication {
+public class RouterServerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(FlightCwsApiApplication.class, args);
+        SpringApplication.run(RouterServerApplication.class, args);
     }
 
 }

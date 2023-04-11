@@ -1,4 +1,4 @@
-package flight.cws.api.config;
+package io.cws.config;
 
 import org.springframework.context.annotation.Configuration;
 

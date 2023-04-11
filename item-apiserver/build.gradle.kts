@@ -29,22 +29,22 @@ dependencies {
     // https://springdoc.org/#Introduction
     // https://stackoverflow.com/questions/74788826/error-calling-jakarta-validation-validationbuilddefaultvalidatorfactory
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0")
-    implementation("org.springframework.boot:spring-boot-starter-validation:3.0.5")
+    implementation("org.springframework.boot:spring-boot-starter-validation")
 
     // datasource
     implementation("org.mariadb.jdbc:mariadb-java-client:3.1.3")
-    implementation("org.springframework.kafka:spring-kafka:3.0.5")
+    implementation("org.springframework.kafka:spring-kafka")
 
     // logging and monitoring
     implementation("com.github.loki4j:loki-logback-appender:1.4.0")
-    implementation("org.springframework.boot:spring-boot-starter-actuator:3.0.5")
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("io.micrometer:micrometer-registry-prometheus:1.10.5")
 
     runtimeOnly("com.h2database:h2:2.1.214")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.boot:spring-boot-starter-webflux")
-    testImplementation("org.springframework.kafka:spring-kafka-test:3.0.5")
+    testImplementation("org.springframework.kafka:spring-kafka-test")
 }
 
 tasks.withType<KotlinCompile> {

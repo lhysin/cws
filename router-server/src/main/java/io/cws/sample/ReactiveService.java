@@ -1,7 +1,7 @@
-package flight.cws.api.sample;
+package io.cws.sample;
 
-import flight.cws.api.common.DummyApiClientService;
-import flight.cws.api.common.WebClientService;
+import io.cws.common.DummyApiClientService;
+import io.cws.common.WebClientService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

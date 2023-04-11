@@ -1,4 +1,4 @@
-package flight.cws.api.sample;
+package io.cws.sample;
 
 import lombok.Builder;
 import lombok.Data;

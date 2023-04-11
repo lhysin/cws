@@ -1,4 +1,4 @@
-package flight.cws.api.config;
+package io.cws.config;
 
 import io.netty.util.concurrent.ThreadPerTaskExecutor;
 import org.springframework.context.annotation.Bean;

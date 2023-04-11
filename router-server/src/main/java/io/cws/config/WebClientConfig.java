@@ -1,4 +1,4 @@
-package flight.cws.api.config;
+package io.cws.config;
 
 import io.netty.channel.ChannelOption;
 import io.netty.handler.ssl.SslContextBuilder;
