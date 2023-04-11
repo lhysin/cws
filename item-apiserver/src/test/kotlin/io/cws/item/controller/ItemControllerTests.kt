@@ -1,6 +1,6 @@
 package io.cws.item.controller
 
-import io.cws.item.ItemApplication
+import io.cws.item.ItemApiApplication
 import io.cws.item.dto.ChangeItemForm
 import io.cws.item.dto.CreateItemForm
 import io.cws.item.entity.Item
@@ -14,10 +14,8 @@ import java.math.BigDecimal
 
 private val logger = KotlinLogging.logger {}
 
-@SpringBootTest(
-    classes = [ItemApplication::class],
-    webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class OrderApiTests (
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+class ItemControllerTests (
 
     @Autowired
     var webTestClient: WebTestClient

@@ -1,20 +1,45 @@
 spring:
-  datasource:
-    url: jdbc:h2:mem:db1;MODE=MySql;DB_CLOSE_DELAY=-1
-    username: sa
-    password:
-    driverClassName: org.h2.Driver
   jpa:
     database: mysql
     hibernate:
       ddl-auto: create
     show-sql: true
-  h2:
-    console:
-      enabled: true
 logging:
   level:
     org.springframework.data: warn
     h2: debug
     io.cws: debug
-#    com.github.sonus21: ERROR
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,swagger-ui
+
+springdoc:
+  packages-to-scan:
+    - io.cws
+    - org.springframework.boot.actuate
+---
+spring:
+  config:
+    activate:
+      on-profile: default
+  datasource:
+    url: jdbc:h2:mem:db1;MODE=MySql;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+    driverClassName: org.h2.Driver
+  h2:
+    console:
+      enabled: true
+---
+spring:
+  config:
+    activate:
+      on-profile: prd
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    driverClassName: org.mariadb.jdbc.Driver

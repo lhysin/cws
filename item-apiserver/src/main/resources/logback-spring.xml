@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!-- use Spring default values -->
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+            <charset>utf8</charset>
+        </encoder>
+    </appender>
+
+    <springProfile name="prd">
+        <appender name="LOKI" class="com.github.loki4j.logback.Loki4jAppender">
+            <http>
+                <url>http://144.24.91.88:3100/loki/api/v1/push</url>
+            </http>
+            <format>
+                <label>
+                    <pattern>app=item-apiserver,host=${HOSTNAME},level=%level,profile=${spring.profiles.active}</pattern>
+                </label>
+                <message>
+                    <pattern>${FILE_LOG_PATTERN}</pattern>
+                </message>
+                <sortByTime>true</sortByTime>
+            </format>
+        </appender>
+    </springProfile>
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+    </root>
+    <root level="INFO">
+        <appender-ref ref="LOKI" />
+    </root>
+
+</configuration>
