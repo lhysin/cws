@@ -1,3 +1,18 @@
+server:
+  port: 8980
+spring:
+  application:
+    name: router-server
+  kafka:
+    bootstrap-servers: 144.24.91.88:9092
+    consumer:
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      group-id: router-server-group-default
+    template:
+      default-topic: cws-item-topic-default
+
 management:
   endpoints:
     web:
@@ -17,8 +32,6 @@ server:
     enabled: true
 
 spring:
-  application:
-    name: router-server
   config:
     activate:
       on-profile: local
@@ -29,3 +42,16 @@ spring:
   # 404 not found settings
   #mvc:
   #  throw-exception-if-no-handler-found: true
+
+---
+spring:
+  application:
+    name: router-server
+  config:
+    activate:
+      on-profile: prd
+  kafka:
+    consumer:
+      group-id: router-server-group-prd
+    template:
+      default-topic: cws-item-topic-prd

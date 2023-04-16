@@ -61,7 +61,7 @@ jobs:
             docker stop cws-router-server
             docker rm -f cws-router-server
             docker pull lhysin/cws-router-server:latest
-            docker run -d -p 8980:8080 --name cws-router-server \
+            docker run -d -p 8980:8980 --name cws-router-server \
             -e SPRING_DATASOURCE_URL=${{ secrets.SPRING_DATASOURCE_URL }} \
             -e SPRING_DATASOURCE_USERNAME=${{ secrets.SPRING_DATASOURCE_USERNAME }} \
             -e SPRING_DATASOURCE_PASSWORD=${{ secrets.SPRING_DATASOURCE_PASSWORD }} \

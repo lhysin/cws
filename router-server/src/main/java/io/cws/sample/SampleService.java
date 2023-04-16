@@ -1,18 +1,19 @@
 package io.cws.sample;
 
+import java.net.http.HttpTimeoutException;
+import java.util.Arrays;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
+
 import io.cws.common.DummyApiClientService;
 import io.cws.common.WebClientService;
 import io.netty.handler.timeout.ReadTimeoutException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
-import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.Disposable;
 import reactor.core.publisher.Mono;
-
-import java.net.http.HttpTimeoutException;
-import java.util.Arrays;
-import java.util.List;
 
 @Slf4j
 @Service
@@ -78,5 +79,10 @@ public class SampleService {
         return disposable;
     }
 
+    public Mono<Void> logAndReturnEmpty(Mono<String> event) {
+        return event
+            .doOnNext(message -> log.info("[Consumed message] : " + message))
+            .then();
+    }
 
 }

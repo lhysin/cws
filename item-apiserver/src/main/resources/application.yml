@@ -1,9 +1,19 @@
+server:
+  port: 8880
+
 spring:
   jpa:
     database: mysql
     hibernate:
       ddl-auto: create
     show-sql: true
+
+  kafka:
+    bootstrap-servers: 144.24.91.88:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
 logging:
   level:
     org.springframework.data: warn
@@ -30,6 +40,9 @@ spring:
   config:
     activate:
       on-profile: default
+  kafka:
+    template:
+      default-topic: cws-item-topic-default
   datasource:
     url: jdbc:h2:mem:db1;MODE=MySql;DB_CLOSE_DELAY=-1
     username: sa
@@ -43,6 +56,9 @@ spring:
   config:
     activate:
       on-profile: prd
+  kafka:
+    template:
+      default-topic: cws-item-topic-prd
   jpa:
     hibernate:
       ddl-auto: update

@@ -43,6 +43,8 @@ dependencies {
     // https://springdoc.org/#Introduction
     implementation("org.springdoc:springdoc-openapi-webflux-ui:1.6.7")
 
+    implementation("org.springframework.kafka:spring-kafka")
+
     // logging and monitoring
     implementation("com.github.loki4j:loki-logback-appender:1.4.0")
     implementation("io.micrometer:micrometer-registry-prometheus:1.10.5")
