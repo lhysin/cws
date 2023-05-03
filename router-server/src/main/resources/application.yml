@@ -24,6 +24,9 @@ management:
           - prometheus
           - env
           - httptrace
+logging:
+  level:
+    io.cws: debug
 ---
 server:
   port: 8080

@@ -48,6 +48,9 @@ dependencies {
     // logging and monitoring
     implementation("com.github.loki4j:loki-logback-appender:1.4.0")
     implementation("io.micrometer:micrometer-registry-prometheus:1.10.5")
+
+    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+    implementation 'com.amazonaws:aws-java-sdk-sqs:1.12.1067'
 }
 
 test {
@@ -57,4 +60,13 @@ test {
 bootRun {
     String activeProfile = System.properties['spring.profiles.active']
     systemProperty "spring.profiles.active", activeProfile
+}
+ext {
+    set('springCloudVersion', "2021.0.7")
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
 }
