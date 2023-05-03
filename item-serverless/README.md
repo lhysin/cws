@@ -1,5 +1,5 @@
 aws lambda 
-## (by serverless with CloudFormation.)
+(by serverless with CloudFormation.)
 ===================
 ### item-serverless
 #### by python3.9 with Serverless Framework
