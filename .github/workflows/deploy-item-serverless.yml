@@ -29,6 +29,13 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-northeast-2
 
+      - name: lookup dir
+        run: ll
+
+      - name: lookup dir with wokring directory
+        run: ll
+        working-directory: item-serverless
+
       - name: Deploy with Serverless Framework
         run: sls deploy
         working-directory: item-serverless
