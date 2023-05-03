@@ -30,10 +30,10 @@ jobs:
           aws-region: ap-northeast-2
 
       - name: lookup dir
-        run: ll
+        run: ls
 
       - name: lookup dir with wokring directory
-        run: ll
+        run: ls
         working-directory: item-serverless
 
       - name: Deploy with Serverless Framework
