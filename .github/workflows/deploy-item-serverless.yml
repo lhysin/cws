@@ -31,3 +31,4 @@ jobs:
 
       - name: Deploy with Serverless Framework
         run: sls deploy
+        working-directory: item-serverless
