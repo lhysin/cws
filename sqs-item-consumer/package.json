@@ -1,0 +1,13 @@
+{
+    "name": "sqs-item-consumer",
+    "version": "1.0.0",
+    "description": "Lambda function for logging SQS messages to Loki",
+    "main": "index.js",
+    "type": "module",
+    "dependencies": {
+        "@loki/core": "^2.9.0",
+        "@loki/transport-http": "^2.9.0",
+        "aws-sdk": "^2.1057.0",
+        "serverless-http": "^2.4.2"
+    }
+}
