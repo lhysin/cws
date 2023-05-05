@@ -33,4 +33,4 @@ const handler = async (event) => {
     }
 };
 
-export const logSqsMessages = serverless(handler);
+export const itemConsumer = serverless(handler);

@@ -21,8 +21,8 @@ provider:
   region: ap-northeast-2
 
 functions:
-  logSqsMessages:
-    handler: index.logSqsMessages
+  itemConsumer:
+    handler: index.itemConsumer
     events:
       - sqs:
           arn: arn:aws:sqs:ap-northeast-2:627500151784:std-dev-sqs-cws-item
