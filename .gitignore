@@ -46,3 +46,4 @@ gradle.properties
 !/gradle/wrapper/gradle-wrapper.jar
 
 node_modules
+.serverless
