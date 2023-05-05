@@ -4,6 +4,7 @@ import java.net.http.HttpTimeoutException;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -70,7 +71,7 @@ public class SampleService {
             .subscribe(response -> log.info(">>>>>> response Status : {}, Body : {}", response.getStatus(), response.getData())
             );
 
-        webClientService.requestGet("/getResTest", "param=1")
+        webClientService.requestGetWrap("/getResTest", "param=1")
             .onErrorMap(ReadTimeoutException.class, ex -> new HttpTimeoutException("ReadTimeout"))
             .subscribe(response -> log.info(">>>>>> response Status : {}, Body : {}", response.getStatus(), response.getData())
             );

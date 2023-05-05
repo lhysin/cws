@@ -1,5 +1,6 @@
 package io.cws.sample;
 
+import io.cws.service.AsyncService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,7 @@ import reactor.core.scheduler.Schedulers;
 public class ReactiveController {
 
     private final ReactiveService reactiveService;
+    private final AsyncService asyncService;
 
     @GetMapping(value = "/react/response/block")
     public Mono<ResponseDto> getResponseBlockTest() {
@@ -38,6 +40,11 @@ public class ReactiveController {
     public Flux<Disposable> getResponseMultiTest() {
 
         return reactiveService.getMultiNonBlockTest1();
+    }
+
+    @GetMapping(value = "/react/execute/multicall")
+    public Disposable getExecuteMultiApiCall() {
+        return asyncService.executeMultiApiCall();
     }
 
 

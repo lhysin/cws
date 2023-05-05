@@ -25,7 +25,7 @@ public class DummyApiClientService {
 
     public Mono<ResponseDto> apiCall(String uriPath, String uriQuery) {
 
-        Mono<ResponseDto> res = webClientService.requestGet(uriPath, uriQuery)
+        Mono<ResponseDto> res = webClientService.requestGetWrap(uriPath, uriQuery)
             .doOnSuccess(
                 responseDto -> log.info("Request apiCall Success. {}", responseDto)
             )

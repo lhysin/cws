@@ -100,7 +100,7 @@ public class WebClientConfig {
                 conn.addHandlerLast(new ReadTimeoutHandler(10_000, TimeUnit.MILLISECONDS)) //읽기시간초과 타임아웃
                     .addHandlerLast(new WriteTimeoutHandler(10_000, TimeUnit.MILLISECONDS)) //쓰기시간초과 타임아웃
             )
-            .responseTimeout(Duration.ofMillis(5_000)) // 최종 response가 끝나기까지 타임아웃. 커넥션+읽기+쓰기 타임을 주는게 적절
+            .responseTimeout(Duration.ofMillis(30_000)) // 최종 response가 끝나기까지 타임아웃. 커넥션+읽기+쓰기 타임을 주는게 적절
             .secure(
                 sslContextSpec -> {
                     try {
