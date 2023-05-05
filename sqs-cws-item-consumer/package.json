@@ -1,0 +1,17 @@
+{
+    "name": "sqs-cws-item-consumer",
+    "version": "1.0.0",
+    "description": "Aws Sqs Cws Item Consumer",
+    "main": "index.js",
+    "dependencies": {
+        "aws-sdk": "^2.1023.0",
+        "winston": "^3.3.3",
+        "winston-loki": "6.0.6"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node index.js"
+    },
+    "author": "",
+    "license": "ISC"
+}
