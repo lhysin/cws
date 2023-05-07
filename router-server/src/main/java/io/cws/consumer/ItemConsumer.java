@@ -24,7 +24,7 @@ public class ItemConsumer {
             Mono.just(message)
         ).then(
             // 외부 API 동시 요청
-            Mono.fromFuture(asyncService.executeAsyncFeignClient())
+            asyncService.executeMultiApiCall()
         ).then(
             // AWS SQS 메세지 생성
             messagingService.createSqsMessage(message)

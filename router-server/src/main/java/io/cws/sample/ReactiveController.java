@@ -1,10 +1,11 @@
 package io.cws.sample;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import io.cws.service.AsyncService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 import reactor.core.Disposable;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -43,7 +44,7 @@ public class ReactiveController {
     }
 
     @GetMapping(value = "/react/execute/multicall")
-    public Disposable getExecuteMultiApiCall() {
+    public Mono<Void> getExecuteMultiApiCall() {
         return asyncService.executeMultiApiCall();
     }
 
