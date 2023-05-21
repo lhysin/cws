@@ -1,9 +1,9 @@
 name: deploy-item-apiserver
 
 on:
-  push:
-    paths:
-      - item-apiserver/**
+  #push:
+  #  paths:
+  #    - item-apiserver/**
   workflow_dispatch:
 
 permissions:
