@@ -1,9 +1,9 @@
 name: deploy-sqs-item-consumer
 
 on:
-  push:
-    paths:
-      - sqs-item-consumer/**
+  #push:
+  #  paths:
+  #    - sqs-item-consumer/**
   workflow_dispatch:
 
 permissions:
