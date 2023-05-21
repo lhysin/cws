@@ -1,9 +1,9 @@
 name: deploy-item-serverless
 
 on:
-  push:
-    paths:
-      - item-serverless/**
+  #push:
+  #  paths:
+  #    - item-serverless/**
   workflow_dispatch:
 
 permissions:
